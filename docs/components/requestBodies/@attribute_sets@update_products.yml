@@ -1,9 +1,0 @@
-post:
-  content:
-    application/json:
-      schema:
-        type: object
-        properties:
-          setId:
-            type: integer
-            required: true

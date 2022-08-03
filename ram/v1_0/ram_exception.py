@@ -1,2 +1,0 @@
-class RamException(Exception):
-    pass

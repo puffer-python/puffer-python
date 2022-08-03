@@ -1,6 +1,0 @@
-get:
-  - in: path
-    name: masterCategoryId
-    required: true
-    schema:
-      type: integer

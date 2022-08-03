@@ -1,6 +1,0 @@
-get:
-  - in: path
-    name: configId
-    schema:
-      type: integer
-    required: true

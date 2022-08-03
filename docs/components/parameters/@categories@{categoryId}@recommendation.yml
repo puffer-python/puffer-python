@@ -1,6 +1,0 @@
-get:
-  - in: path
-    name: categoryId
-    schema:
-      type: integer
-      example: 1

@@ -1,5 +1,0 @@
-patch:
-  - in: header
-    name: X-USER-ID
-    schema:
-      type: string

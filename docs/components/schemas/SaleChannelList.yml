@@ -1,8 +1,0 @@
-allOf:
-  - $ref: ObjectList.yml
-  - type: object
-    properties:
-      saleChannels:
-        type: array
-        items:
-          $ref: SaleChannel.yml

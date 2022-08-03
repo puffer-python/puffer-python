@@ -1,6 +1,0 @@
-patch:
-  - in: path
-    name: idNode
-    required: true
-    schema:
-      type: integer

@@ -1,8 +1,0 @@
-type: object
-properties:
-  currentPage:
-    type: integer
-  pageSize:
-    type: integer
-  totalRecords:
-    type: integer
