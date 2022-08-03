@@ -1,33 +1,6 @@
 # coding=utf-8
 import logging
 
-from .brand_provider import BrandProvider
-from .color_provider import ColorProvider
-from .unit_provider import UnitProvider
-from .attribute_set_provider import AttributeSetProvider
-from .misc_provider import MiscProvider
-from .attribute_group_provider import AttributeGroupProvider
-from .attribute_provider import AttributeProvider
-from .product_provider import ProductProvider
-from .log_product_edit import LogProductEditProvider
-from .attribute_set_config_detail import AttributeSetConfigDetailProvider
-from .category_provider import CategoryProvider
-from .master_category_provider import MasterCategoryProvider
-from .seller_provider import SellerProvider
-from .file_import_provider import FileImportProvider, ResultImportProvider
-from .terminal_provider import TerminalProvider
-from .seller_terminal_provider import SellerTerminalProvider
-from .sellable_product_terminal_provider import SellableProductTerminalProvider
-from .user_provider import UserProvider
 from .tax import TaxProvider
-from .shipping_policy import ShippingPolicyProvider
-from .terminal_group_provider import TerminalGroupProvider
-from .sellable_product_tag import SellableProductTagProvider
-from .failed_variant_image_request_provider import FailedVariantImageRequestProvider
-from .shipping_type_provider import ShippingTypeProvider
-from .sellable_product_shipping_type_provider import SellableProductShippingTypeProvider
-from .category_shipping_type_provider import CategoryShippingTypeProvider
-from .product_category_provider import ProductCategoryProvider
 
-__author__ = 'Kien.HT'
 _logger = logging.getLogger(__name__)
