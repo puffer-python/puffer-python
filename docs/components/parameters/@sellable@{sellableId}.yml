@@ -1,0 +1,6 @@
+get:
+  - in: path
+    name: sellableId
+    required: true
+    schema:
+      type: integer

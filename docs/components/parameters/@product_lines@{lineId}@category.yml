@@ -1,0 +1,7 @@
+get:
+  - in: path
+    name: lineId
+    required: true
+    schema:
+      type: integer
+      example: 1

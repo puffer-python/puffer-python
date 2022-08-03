@@ -1,0 +1,13 @@
+post:
+  - in: header
+    name: X-USER-ID
+    schema:
+      type: string
+
+get:
+  - in: query
+    name: variantIds
+    required: true
+    schema:
+      type: string
+    example: "1,2,3,4,5"

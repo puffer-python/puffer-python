@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: integer
+  sku:
+    type: string
+  oldData:
+    type: string
+  newData:
+    type: string
+  updatedBy:
+    type: string
+    format: email
+    example: a.nv@teko.vn
+  updatedAt:
+    type: string
+    format: date-time
+    example: 2017-07-21T17:32:28Z
+  createdAt:
+    type: string
+    format: date-time
+    example: 2017-07-21T17:32:28Z

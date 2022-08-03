@@ -1,0 +1,18 @@
+put:
+  - in: path
+    name: sellableId
+    required: true
+    schema:
+      type: integer
+
+get:
+  - in: path
+    name: sellableId
+    required: true
+    schema:
+      type: integer
+  - in: query
+    name: terminalCodes
+    required: false
+    schema:
+      type: integer

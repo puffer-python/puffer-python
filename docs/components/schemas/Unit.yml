@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  code:
+    type: string
+    example: "BO"
+  name:
+    type: string
+    example: "Bó"

@@ -1,0 +1,14 @@
+type: object
+properties:
+  seoName:
+    $ref: SeoMetaData.yml
+  shortDescription:
+    $ref: SeoMetaData.yml
+  description:
+    type: string
+  metaTitle:
+    $ref: SeoMetaData.yml
+  metaKeyword:
+    $ref: SeoMetaData.yml
+  metaDescription:
+    $ref: SeoMetaData.yml

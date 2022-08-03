@@ -1,0 +1,7 @@
+get:
+  - name: categoryId
+    in: path
+    required: true
+    schema:
+      type: integer
+    description: Numeric ID of the category

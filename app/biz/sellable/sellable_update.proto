@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package catalog.sellable;
+
+
+//nextId = 28
+message SellableUpdateMessage {
+  string sku = 1;
+  string uomPoCode = 2;
+  string partNumber = 3;
+  string barcode = 4;
+  string name = 5;
+  string uomCode = 6;
+  string type = 7;
+  bool isActive = 8;
+  string categCode = 9;
+  bool costPriceCalc = 10;
+  string vatInCode = 12;
+  float warrantyPeriod = 13;
+  string warrantyNote = 14;
+  string productBrandCode = 15;
+  uint32 daysBeforeExpLock = 16;
+  uint32 weight = 17;
+  uint32 length = 18;
+  uint32 width = 19;
+  uint32 height = 20;
+  uint32 sellerId = 21;
+  bool serialTracking = 22;
+  bool autoGenerateSerial = 23;
+  bool sellable = 24;
+  bool expiryTracking = 25;
+  uint32 expirationType = 11;
+  string sellerSku = 26;
+  repeated string shippingTypes = 27;
+}

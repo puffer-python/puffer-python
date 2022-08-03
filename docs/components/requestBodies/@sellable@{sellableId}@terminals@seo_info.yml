@@ -1,0 +1,33 @@
+put:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          terminalCodes:
+            type: array
+            items:
+              type: string
+              example: "PVU_OLN_WEB_0001"
+          seoInfo:
+            type: object
+            properties:
+              displayName:
+                type: string
+                example: "display name"
+              metaTitle:
+                type: string
+                example: "meta title"
+              metaKeyword:
+                type: string
+                example: "meta keyword"
+              metaDescription:
+                type: string
+                example: "meta description"
+              description:
+                type: string
+                example: "description"
+              shortDescription:
+                type: string
+                example: "short description"
+

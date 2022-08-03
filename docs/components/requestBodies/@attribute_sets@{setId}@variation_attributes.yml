@@ -1,0 +1,26 @@
+patch:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - ids
+        properties:
+          ids:
+            type: array
+            items:
+              type: integer
+
+post:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - attributeId
+          - variationDisplayType
+        properties:
+          attributeId:
+            type: integer
+          variationDisplayType:
+            type: string

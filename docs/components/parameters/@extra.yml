@@ -1,0 +1,7 @@
+get:
+  - in: query
+    name: types
+    schema:
+      type: string
+    example: units
+    description: Text query on the url

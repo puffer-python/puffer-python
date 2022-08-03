@@ -1,0 +1,13 @@
+InternalServer:
+  description: Server error
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            type: string
+            default: ERROR
+          message:
+            type: string
+            example: Có lỗi xảy ra

@@ -1,0 +1,33 @@
+type: object
+properties:
+  name:
+    type: string
+    example: "Series của laptop"
+  displayName:
+    type: string
+    example: "Series laptop"
+  code:
+    type: string
+    example: "laptop_series"
+  valueType:
+    type: string
+    example: "selection"
+  isRequired:
+    type: boolean
+    example: false
+  isSearchable:
+    type: boolean
+    example: true
+  isFilterable:
+    type: boolean
+    example: true
+  isComparable:
+    type: boolean
+    example: false
+  unitId:
+    type: integer
+    example: null
+  description:
+    type: string
+    nullable: true
+    example: ""

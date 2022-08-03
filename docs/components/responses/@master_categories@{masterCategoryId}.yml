@@ -1,0 +1,21 @@
+patch:
+  200:
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/GenericMasterCategory.yml
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer
+
+get:
+  200:
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/GenericMasterCategory.yml
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

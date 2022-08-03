@@ -1,0 +1,44 @@
+put:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer
+
+get:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    displayName:
+                      type: string
+                    metaTitle:
+                      type: string
+                    metaDescription:
+                      type: string
+                    metaKeyword:
+                      type: string
+                    description:
+                      type: string
+                    shortDescription:
+                      type: string
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

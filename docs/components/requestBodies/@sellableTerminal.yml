@@ -1,0 +1,38 @@
+post:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          skus:
+            type: array
+            example: ["SKU1", "SKU2"]
+            items:
+              type: string
+          sellerTerminals:
+            type:  array
+            items:
+              type: object
+              properties:
+                applySellerId:
+                  type: integer
+                  example: 1
+                terminals:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          terminalType:
+                            type: string
+                            example: "ONL"
+                          terminalCodes:
+                            oneOf:
+                            - type: string
+                              example: "all"
+                            - type: array
+                              items:
+                                type: string
+                                example: ["CP09"]
+                    - type: string
+                      example: "null"

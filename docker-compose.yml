@@ -1,0 +1,59 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - worker
+    restart: on-failure
+    env_file:
+      - .env
+    volumes:
+      - ./:/code
+    command: uwsgi --ini uwsgi.ini
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/code
+    env_file:
+      - .env
+    command: celery -A catalog.celery worker -l info
+    restart: on-failure
+  worker_import_product:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/code
+    env_file:
+      - .env
+    command: celery -A catalog.celery worker -Q import_product --concurrency=1 -l info
+    restart: on-failure
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/code
+    env_file:
+      - .env
+    command: celery flower -A catalog.celery --port=5500
+    restart: on-failure
+    ports:
+      - "${FLOWER_PORT}:5500"
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/code
+    env_file:
+      - .env
+    command: flask subscribe-teko-queue
+    restart: on-failure
+  broker:
+    image: redis
+    restart: on-failure

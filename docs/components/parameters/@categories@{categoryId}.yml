@@ -1,0 +1,12 @@
+patch:
+  - in: path
+    name: categoryId
+    required: true
+    schema:
+      type: integer
+get:
+  - in: path
+    name: categoryId
+    schema:
+      type: integer
+      example: 1

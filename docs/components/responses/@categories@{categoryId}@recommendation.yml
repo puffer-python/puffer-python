@@ -1,0 +1,36 @@
+get:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 2
+                    name:
+                      type: string
+                      example: "Mẹ & Bé"
+                    code:
+                      type: string
+                      example: "002"
+                    isActive:
+                      type: boolean
+                      example: true
+                    depth:
+                      type: integer
+                      example: 2
+                    path:
+                      type: string
+                      example: "1/2"
+
+
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

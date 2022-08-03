@@ -1,0 +1,34 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  name:
+    type: string
+    example: "Import danh sách laptop.xlsx"
+  status:
+    type: string
+    example: "new"
+  totalRow:
+    type: integer
+    example: 200
+  path:
+    type: string
+    example: "https://storage.googleapis.com/teko-gae.appspot.com/media/doc/2020/3/9/20200309_5ca4e766-e58e-4530-a124-3d617d1fe562.xlsx"
+  note:
+    type: string
+    example: "Laptop mới"
+  totalRowSuccess:
+    type: integer
+    example: null
+  successPath:
+    type: string
+    example: null
+  createdAt:
+    type: string
+    format: date-time
+    example: 2017-07-21T17:32:28Z
+  createdBy:
+    type: string
+    format: email
+    example: thanh.nk@teko.vn

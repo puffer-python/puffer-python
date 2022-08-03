@@ -1,0 +1,38 @@
+get:
+  - in: query
+    name: productId
+    schema:
+      type: integer
+    example: 1
+  - in: query
+    name: query
+    schema:
+      type: string
+    example: "sua-bot"
+    description: "name or code"
+  - in: query
+    name: editingStatusCode
+    schema:
+      type: string
+    example: "draft"
+  - in: query
+    name: page
+    schema:
+      type: integer
+    example: 1
+  - in: query
+    name: pageSize
+    schema:
+      type: string
+    example: 10
+post:
+  - in: header
+    name: X-USER-ID
+    schema:
+      type: string
+
+patch:
+  - in: header
+    name: X-USER-ID
+    schema:
+      type: string

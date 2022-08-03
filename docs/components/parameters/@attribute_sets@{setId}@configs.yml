@@ -1,0 +1,12 @@
+get:
+  - in: path
+    name: setId
+    schema:
+      type: integer
+    required: true
+put:
+  - in: path
+    name: setId
+    schema:
+      type: integer
+    required: true

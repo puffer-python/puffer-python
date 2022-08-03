@@ -1,0 +1,42 @@
+BadRequest:
+  description: Client request invalid
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            type: string
+            default: INVALID
+          message:
+            type: string
+            example: Có lỗi xảy ra
+          result:
+            type: array
+            items:
+              type: object
+              properties:
+                field:
+                  type: string
+                  description: Error field name
+                  example: name
+                messages:
+                  type: array
+                  items:
+                    type: string
+                    description: Error detail message
+                    example: Giá trị không hợp lệ
+
+NotFound:
+  description: Resource not found
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            type: string
+            default: NOT FOUND
+          message:
+            type: string
+            example: Requested resource could not be found

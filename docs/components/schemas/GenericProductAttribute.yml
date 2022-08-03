@@ -1,0 +1,21 @@
+  type: object
+  properties:
+    id:
+      type: integer
+    value_type:
+      type: string
+      enum: [text, selection, multiple_select]
+    code:
+      type: text
+    data:
+      oneOf:
+        - type: string
+        - type: object
+          properties:
+            option_id:
+              type: string
+            value:
+              type: string
+            unit_code:
+              type: string
+              nullable: true

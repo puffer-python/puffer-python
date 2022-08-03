@@ -1,0 +1,10 @@
+patch:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          masterCategoryId:
+            type: integer
+        required:
+          - masterCategoryId

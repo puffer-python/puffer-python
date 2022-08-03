@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package catalog.uom;
+
+message UomMessage {
+  string code = 1;
+  string name = 2;
+  bool isActive = 3;
+  string displayName = 4;
+  uint32 sellerId = 5;
+}

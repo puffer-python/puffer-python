@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package catalog.catalog_products;
+
+message CatalogProductsMessage {
+    repeated CatalogProductMessage products = 1;
+}
+
+message CatalogSellerMessage {
+    int64 id = 1;
+    string name = 2;
+    string display_name = 3;
+}
+
+message CatalogCategoryMessage {
+    int64 id = 1;
+    string code = 2;
+    string name = 3;
+    int32 level = 4;
+    int64 parent_id = 5;
+}
+
+message PlatformCategoryMessage {
+    int32 platform_id = 1;
+    int32 owner_seller_id = 2;
+    repeated CatalogCategoryMessage categories = 3;
+}
+
+message CatalogBrandMessage {
+    int64 id = 1;
+    string code = 2;
+    string name = 3;
+    string url_key = 4;
+    string description = 5;
+}
+
+message CatalogStatusMessage {
+    int32 priority = 1;
+    int32 publish_status = 2;
+    string selling_status_code = 3;
+    int32 need_manage_stock = 4;
+}
+
+message CatalogBundleProductMessage {
+    string sku = 1;
+    int32 quantity = 2;
+    string name = 3;
+    string seo_name = 4;
+    int32 priority = 5;
+}
+
+message TaxMessage {
+    string tax_in_code = 1;
+    string tax_out_code = 2;
+    float tax_in = 3;
+    float tax_out = 4;
+}
+
+message CatalogProductMessage {
+    string sku = 1;
+    int64 id = 2;
+    string name = 3;
+    string uom = 4;
+    string barcode = 5;
+    repeated string terminals = 6;
+    string smart_showroom = 7;
+    CatalogSellerMessage seller = 8;
+    repeated CatalogCategoryMessage categories = 9;
+    CatalogBrandMessage brand = 10;
+    CatalogStatusMessage status = 11;
+    int32 is_bundle = 12;
+    repeated CatalogBundleProductMessage bundle_products = 13;
+    string url_key = 14;
+    TaxMessage tax = 15;
+    repeated string terminal_groups = 16;
+    string uom_code = 17;
+    string seller_sku = 18;
+    string display_name = 19;
+    string uom_ratio = 20;
+    string parent_sku = 21;
+    repeated PlatformCategoryMessage platform_categories = 22;
+    repeated int64 terminal_group_ids = 23;
+    int64 selling_price = 24;
+    bool selling_status = 25;
+    int64 listed_price = 26;
+    string tax_out_code = 27;
+}

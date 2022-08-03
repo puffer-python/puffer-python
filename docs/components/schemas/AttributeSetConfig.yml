@@ -1,0 +1,16 @@
+type: object
+properties:
+  objectType:
+    type: string
+    nullable: true
+  objectValue:
+    type: string
+    nullable: true
+  textBefore:
+    type: string
+    nullable: true
+  textAfter:
+    type: string
+    nullable: true
+  priority:
+    type: integer

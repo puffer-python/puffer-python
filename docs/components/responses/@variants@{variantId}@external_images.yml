@@ -1,0 +1,24 @@
+patch:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    requestId:
+                      type: string
+                      example: "c1a28800-0750-482a-8ab1-c473068e555b"
+                      description: "The API will return the request_id right away after receiving the request.
+                      Each creating variant image request will have a request_id.
+                      Creating image jobs will be done asynchronously and the result will be logged in variant_image_logs table.
+                      This request_id will be used to query the logs in the future"
+
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

@@ -1,0 +1,7 @@
+type: object
+properties:
+  code:
+    type: string
+    default: SUCCESS
+  message:
+    type: string  

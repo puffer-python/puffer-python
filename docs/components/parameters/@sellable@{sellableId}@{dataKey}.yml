@@ -1,0 +1,12 @@
+get:
+  - in: path
+    name: sellableId
+    required: true
+    schema:
+      type: integer
+  - in: path
+    name: dataKey
+    required: true
+    schema:
+      type: string
+    example: "common|images|specs|terminals|terminal_groups|uom"

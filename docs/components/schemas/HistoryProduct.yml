@@ -1,0 +1,6 @@
+type: object
+properties:
+  histories:
+    type: array
+    items:
+      $ref: GenericProductHistory.yml

@@ -1,0 +1,61 @@
+post:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+          code:
+            type: string
+          parentId:
+            type: integer
+          taxInCode:
+            type: string
+          taxOutCode:
+            type: string
+          attributeSetId:
+            type: integer
+          manageSerial:
+            type: boolean
+          autoGenerateSerial:
+            type: boolean
+          unitId:
+            type: integer
+        required:
+          - name
+          - code
+          - parentId
+          - taxInCode
+          - taxOutCode
+          - manageSerial
+          - unitId
+patch:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            required: True
+          isActive:
+            type: boolean
+          code:
+            type: string
+          parentId:
+            type: integer
+          taxInCode:
+            type: string
+          taxOutCode:
+            type: string
+          attributeSetId:
+            type: integer
+          manageSerial:
+            type: boolean
+          autoGenerateSerial:
+            type: boolean
+          unitId:
+            type: integer
+          masterCategoryId:
+            type: integer

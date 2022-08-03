@@ -1,0 +1,8 @@
+post:
+  - in: query
+    name: variantsIds
+    schema:
+      type: array
+      items:
+        type: integer
+    example: 1,2,3,4,5

@@ -1,0 +1,52 @@
+get:
+  - in: query
+    name: keyword
+    required: false
+    schema:
+      type: string
+  - in: query
+    name: category
+    required: false
+    schema:
+      type: string
+    description: filter multiple, phân tách bởi dấu phẩy
+  - in: query
+    name: masterCategory
+    required: false
+    schema:
+      type: string
+    description: filter multiple, phân tách bởi dấu phẩy
+  - in: query
+    name: brand
+    required: false
+    schema:
+      type: string
+    description: filter multiple, phân tách bởi dấu phẩy
+  - in: query
+    name: seller
+    required: false
+    schema:
+      type: string
+    description: filter multiple, phân tách bởi dấu phẩy
+  - in: query
+    name: sellingStatus
+    required: false
+    schema:
+      type: string
+    description: filter multiple, id map với id của bảng selling_status
+  - in: query
+    name: onOffStatus
+    required: true
+    schema:
+      type: integer
+    description: id map với id của bảng misc với type là on_off_status
+  - in: query
+    name: page
+    required: false
+    schema:
+      type: integer
+  - in: query
+    name: pageSize
+    required: false
+    schema:
+      type: integer

@@ -1,0 +1,13 @@
+get:
+  - in: path
+    name: attributeId
+    required: true
+    schema:
+      type: integer
+
+patch:
+  - in: path
+    name: attributeId
+    required: true
+    schema:
+      type: integer

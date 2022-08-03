@@ -1,0 +1,134 @@
+get:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  allOf:
+                    - $ref: ../schemas/ObjectList.yml
+                    - type: object
+                      properties:
+                        variants:
+                          type: array
+                          items:
+                            allOf:
+                              - $ref: ../schemas/GenericVariant.yml
+                              - type: object
+                                properties:
+                                  images:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: integer
+                                        example: 1
+                                      url:
+                                        type: string
+                                        example: "https://storage.googleapis.com/teko-catalog-develop/media/image/2020/1/20/7539b61c-9bf5-45cf-8fcd-5f9594b79178_Screenshot_from_2019-09-30_11-56-27.png"
+                                      status:
+                                        type: boolean
+                                        example: true
+                                      priority:
+                                        type: integer
+                                        example: 1
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer
+
+post:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    productId:
+                      type: integer
+                      example: 1
+                    variants:
+                      type: array
+                      items:
+                        allOf:
+                          - $ref: ../schemas/GenericVariant.yml
+                          - type: object
+                            properties:
+                             attributes:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: integer
+                                      example: 1
+                                    value:
+                                      type: integer
+                                      example: 1
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer
+
+patch:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    variants:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          images:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 1
+                                url:
+                                  type: string
+                                  format: uri
+                                  example: https://storage.googleapis.com/teko-catalog-develop/media/image/2020/1/20/7539b61c-9bf5-45cf-8fcd-5f9594b79178_Screenshot_from_2019-09-30_11-56-27.png
+                                label:
+                                  type: string
+                                  nullable: true
+                                  example: null
+                                status:
+                                  type: boolean
+                                  example: true
+                                priority:
+                                  type: integer
+                                  example: 1
+                          uom:
+                            type: object
+                            properties:
+                              ratio:
+                                type: float
+                                example: 1.0
+                              base:
+                                type: integer
+                                example: 1
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

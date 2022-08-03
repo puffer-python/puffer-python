@@ -1,0 +1,92 @@
+type: object
+properties:
+  editingStatus:
+    type: array
+    items:
+      $ref: ../schemas/EditingStatus.yml
+  taxes:
+    type: array
+    items:
+      $ref: ./GenericTax.yml
+  sellingStatus:
+    type: array
+    items:
+      allOf:
+        - $ref: ../schemas/Misc.yml
+        - type: object
+          properties:
+            config:
+              type: string
+      example:
+        id: 6
+        name: "Hàng bán"
+        code: "hang-ban"
+  importTypes:
+    type: array
+    items:
+      $ref: ../schemas/Misc.yml
+    example:
+      - id: 55
+        name: "Tạo sản phẩm"
+        code: "create_product"
+  importStatus:
+    type: array
+    items:
+      allOf:
+        - $ref: ../schemas/Misc.yml
+        - type: object
+          properties:
+            config:
+              type: string
+      example:
+        id: 58
+        name: "Mới"
+        code: "new"
+        config: "{}"
+  productTypes:
+    type: array
+    items:
+      allOf:
+        - $ref: ../schemas/Misc.yml
+      example:
+        id: 17
+        code: "consu"
+        name: "Có thể tiêu thụ"
+  warrantyTypes:
+    type: array
+    items:
+      allOf:
+        - $ref: ../schemas/Misc.yml
+      example:
+        id: 51
+        code: "bill"
+        name: "Hóa đơn"
+  manageStockTypes:
+    type: array
+    items:
+      allOf:
+        - $ref: ../schemas/Misc.yml
+      example:
+        id: 42
+        code: "no_manage"
+        name: "Không quản lí"
+  colors:
+    type: array
+    items:
+      $ref: ../schemas/Misc.yml
+    example:
+      - id: 54
+        code: "red"
+        name: "Đỏ"
+  productUnits:
+    type: array
+    items:
+      $ref: ../schemas/Misc.yml
+    example:
+      - id: 55
+        name: "bịch"
+        code: "bich"
+  seoConfigs:
+    type: array
+    items:
+      $ref: ../schemas/Misc.yml

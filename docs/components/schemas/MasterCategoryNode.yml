@@ -1,0 +1,24 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  code:
+    type: string
+    example: "001-001"
+  name:
+    type: string
+    example: "Tã, Bỉm"
+  children:
+    type: array
+    items:
+      properties:
+        id:
+          type: integer
+          example: 1
+          code:
+            type: string
+            example: "001-001"
+          name:
+            type: string
+            example: "Tã, Bỉm"

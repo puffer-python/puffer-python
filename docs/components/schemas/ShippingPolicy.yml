@@ -1,0 +1,31 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  isActive:
+    type: boolean
+    example: true
+  shippingType:
+    type: string
+    example: "all|near|bulky"
+  providerIds:
+    type: array
+    example: [1, 2]
+  categories:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Laptop
+        code:
+          type: string
+          example: '01-N001'
+        depth:
+          type: integer
+          example: 2

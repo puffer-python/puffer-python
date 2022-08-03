@@ -1,0 +1,1121 @@
+openapi: 3.0.0
+
+info:
+  title: Catalog
+  description: Product management system
+  version: 2.0.0
+
+servers:
+  - url: https://catalog.develop.tekoapis.net
+    description: Dev environment
+  - url: https://catalog.stage.tekoapis.net
+    description: Test 1 environment
+  - url: https://catalog.tekoapis.com
+    description: Production
+
+
+tags:
+  - name: Category
+    description: "Danh mục ngành hàng của seller"
+  - name: Master category
+    description: "Danh mục ngành hàng toàn hệ thống"
+
+components:
+  securitySchemes:
+    JWT:
+      type: http
+      description: Authentication and authorization with IAM service
+      bearerFormat: JWT
+      scheme: bearer
+    SELLER:
+      type: apiKey
+      name: X-SELLER-ID
+      in: header
+
+security:
+  - JWT: [ ]
+  - SELLER: [ ]
+
+paths:
+  /brands:
+    get:
+      tags:
+        - Brand
+      summary: Get list of brand
+      parameters:
+        - $ref: components/parameters/@brands.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@brands.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+      description: The api
+    post:
+      tags:
+        - Brand
+      summary: Create new brand
+      requestBody:
+        $ref: components/requestBodies/@brands.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@brands.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /brands/{brandId}:
+    patch:
+      tags:
+        - Brand
+      summary: Patch brand
+      parameters:
+        - $ref: components/parameters/@brands@{brandId}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@brands@{brandId}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@brands@{brandId}.yml#/patch/200
+    get:
+      tags:
+        - Brand
+      summary: Get detail brand
+      parameters:
+        - $ref: components/parameters/@brands@{brandId}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@brands@{brandId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /extra:
+    get:
+      summary: Get extra data
+      tags:
+        - Extra data
+      parameters:
+        - $ref: components/parameters/@extra.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@extra.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /master_categories:
+    post:
+      summary: Create new master category
+      tags:
+        - Master category
+      requestBody:
+        $ref: components/requestBodies/@master_categories.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@master_categories.yml#/post/200
+    get:
+      tags:
+        - Master category
+      summary: Get master category list
+      parameters:
+        - $ref: components/parameters/@master_categories.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@master_categories.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /master_categories/{masterCategoryId}/children:
+    get:
+      summary: Get master category tree with master category as root
+      tags:
+        - Master category
+      parameters:
+        - $ref: components/parameters/@master_categories@{masterCategoryId}@children.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@master_categories@{masterCategoryId}@children.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /master_categories/{masterCategoryId}:
+    patch:
+      summary: Patch master category
+      tags:
+        - Master category
+      parameters:
+        - $ref: components/parameters/@master_categories@{masterCategoryId}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@master_categories@{masterCategoryId}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@master_categories@{masterCategoryId}.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    get:
+      summary: Get detail master category
+      tags:
+        - Master category
+      parameters:
+        - $ref: components/parameters/@master_categories@{masterCategoryId}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@master_categories@{masterCategoryId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /categories/{categoryId}/children:
+    get:
+      summary: Get category tree with category as root
+      tags:
+        - Category
+      parameters:
+        - $ref: components/parameters/@categories@{categoryId}@children.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@categories@{categoryId}@children.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /products:
+    post:
+      tags:
+        - Product
+      summary: Create new product with generic information
+      parameters:
+        - $ref: components/parameters/@products.yml#/post
+      requestBody:
+        $ref: components/requestBodies/@products.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@products.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /categories/{categoryId}:
+    patch:
+      tags:
+        - Category
+      summary: Update category
+      parameters:
+        - $ref: components/parameters/@categories@{categoryId}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@categories.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@categories@{categoryId}.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    get:
+      summary: Get detail category
+      tags:
+        - Category
+      parameters:
+        - $ref: components/parameters/@categories@{categoryId}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@categories@{categoryId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /categories/{categoryId}/recommendation:
+    get:
+      summary: Get the master category recommendations
+      tags:
+        - Category
+      parameters:
+        - $ref: components/parameters/@categories@{categoryId}@recommendation.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@categories@{categoryId}@recommendation.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /products/{productId}:
+    get:
+      tags:
+        - Product
+      summary: Get info product if status is approved or created by seller
+      parameters:
+        - $ref: components/parameters/@products@{productId}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@products@{productId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    patch:
+      tags:
+        - Product
+      summary: Update product which status is draft and created by user
+      parameters:
+        - $ref: components/parameters/@products@{productId}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@products@{productId}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@products@{productId}.yml#/patch/200
+  /products/draft:
+    get:
+      tags:
+        - Product
+      summary: Get draft product of user
+      responses:
+        200:
+          $ref: components/responses/@products@draft.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    delete:
+      tags:
+        - Product
+      summary: Delete draft product of user
+      responses:
+        200:
+          $ref: components/responses/@products@draft.yml#/delete/200
+  /products/history/{productId}:
+    parameters:
+      - in: path
+        name: productId
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+        - Product
+      summary: Get update histories of a product
+      responses:
+        200:
+          $ref: components/responses/@products@history@{productId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /variants:
+    get:
+      tags:
+        - Variant
+      summary: Get variants list with filters
+      parameters:
+        - $ref: components/parameters/@variants.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@variants.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    post:
+      tags:
+        - Variant
+      summary: Create new variants from product
+      parameters:
+        - $ref: components/parameters/@variants.yml#/post
+      requestBody:
+        $ref: components/requestBodies/@variants.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@variants.yml#/post/200
+    patch:
+      tags:
+        - Variant
+      summary: Update generic info for variant
+      parameters:
+        - $ref: components/parameters/@variants.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@variants.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@variants.yml#/patch/200
+  /variants/{variant_id}/external_images:
+    patch:
+      tags:
+        - Variant
+      summary: Create new variant images from external url images
+      parameters:
+        - in: path
+          name: variant_id
+          schema:
+            type: integer
+          required: true
+        - $ref: components/parameters/@variants@{variantId}@external_images.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@variants@{variantId}@external_images.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@variants@{variantId}@external_images.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /variants/attributes:
+    get:
+      tags:
+        - Variant
+      summary: Get attribute for list variants
+      parameters:
+        - $ref: components/parameters/@variants@attributes.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@variants@attributes.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    post:
+      tags:
+        - Variant
+      summary: Create attribute for list variants
+      parameters:
+        - $ref: components/parameters/@variants@attributes.yml#/post
+      requestBody:
+        $ref: components/requestBodies/@variants@attributes.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@variants@attributes.yml#/post/200
+        400:
+          $ref: components/responses/@variants@attributes.yml#/post/200
+        500:
+          $ref: components/responses/@variants@attributes.yml#/post/200
+  /sellable_products:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get list of SKUs with filters
+      parameters:
+        - $ref: components/parameters/@sellable.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    post:
+      tags:
+        - Sellable Products
+      summary: Create SKUs for list of variants
+      requestBody:
+        $ref: components/requestBodies/@sellable.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@sellable.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/{sellableId}:
+    parameters:
+      - in: path
+        name: sellableId
+        required: true
+    patch:
+      tags:
+        - Sellable Products
+      summary: Update sellable product
+      requestBody:
+        $ref: components/requestBodies/@sellable_products@{sellableId}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@sellable_products@{sellableId}.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/terminals:
+    post:
+      tags:
+        - Sellable Products
+      summary: Update Terminals for Sellable Product
+      requestBody:
+        $ref: components/requestBodies/@sellableTerminal.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@sellableTerminal.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/terminals/{terminalCode}/products:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get list sku of a terminal
+      parameters:
+        - in: path
+          name: terminalCode
+          required: true
+        - $ref: components/parameters/@sellable@terminal.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable@terminal.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/terminal_groups:
+    post:
+      tags:
+        - Sellable Products
+      summary: Update Terminal Groups for Sellable Products
+      requestBody:
+        $ref: components/requestBodies/@sellable_products@terminal_groups.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@sellable_products@terminal_groups.yml#/post/200
+        400:
+          $ref: components/responses/@sellable_products@terminal_groups.yml#/post/200
+        500:
+          $ref: components/responses/@sellable_products@terminal_groups.yml#/post/200
+  /sellable_products/terminal_groups/{terminalGroupCode}/products:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get list sku of a terminal group
+      parameters:
+        - in: path
+          name: terminalGroupCode
+          required: true
+        - $ref: components/parameters/@sellable_products@{terminalGroupCode}@products.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable_products@{terminalGroupCode}@products.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/{sellableId}/terminals/seo_info:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get SEO infomations of Sku on terminal
+      parameters:
+        - $ref: components/parameters/@sellable@{sellableId}@terminals@seo_info.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable@{sellableId}@terminals@seo_info.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    put:
+      tags:
+        - Sellable Products
+      summary: Insert and Update SEO infomations of a Sku on Terminals
+      parameters:
+        - $ref: components/parameters/@sellable@{sellableId}@terminals@seo_info.yml#/put
+      requestBody:
+        $ref: components/requestBodies/@sellable@{sellableId}@terminals@seo_info.yml#/put
+      responses:
+        200:
+          $ref: components/responses/@sellable@{sellableId}@terminals@seo_info.yml#/put/200
+        400:
+          $ref: components/responses/@sellable@{sellableId}@terminals@seo_info.yml#/put/200
+        500:
+          $ref: components/responses/@sellable@{sellableId}@terminals@seo_info.yml#/put/200
+  /sellable_products/{sellableId}/{dataKey}:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get details of a sellable product
+      parameters:
+        - $ref: components/parameters/@sellable@{sellableId}@{dataKey}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable@{sellableId}@{dataKey}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/sku/{sku}/{dataKey}:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get details of a sellable product by sku
+      parameters:
+        - $ref: components/parameters/@sellable@sku@{sku}@{dataKey}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable@sku@{sku}@{dataKey}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/{sellableId}/bundle/skus:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get skus of a bundle product
+      parameters:
+        - $ref: components/parameters/@sellable@{sellableId}@bundle@skus.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable@{sellableId}@bundle@skus.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/{sellableId}/items:
+    put:
+      tags:
+        - Sellable Products
+      summary: Update sub sku
+      parameters:
+        - $ref: components/parameters/@sellable@{sellableId}@items.yml#/put
+      requestBody:
+        $ref: components/requestBodies/@sellable@{sellableId}@items.yml#/put
+      responses:
+        200:
+          $ref: components/responses/@sellable@{sellableId}@items.yml#/put/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/status:
+    patch:
+      tags:
+        - Sellable Products
+      summary: Update status
+      requestBody:
+        $ref: components/requestBodies/@sellable@status.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@sellable@status.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /sellable_products/uom_info:
+    get:
+      tags:
+        - Sellable Products
+      summary: Get uom infor of sku by seller skus or skus
+      parameters:
+        - $ref: components/parameters/@sellable_products@uom_info.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@sellable_products@uom_info.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /categories:
+    get:
+      tags:
+        - Category
+      summary: Get list of category
+      parameters:
+        - $ref: components/parameters/@categories.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@categories.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    post:
+      tags:
+        - Category
+      summary: Create category
+      requestBody:
+        $ref: components/requestBodies/@categories.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@categories.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /taxes:
+    get:
+      tags:
+        - Tax
+      summary: Get taxes list
+      responses:
+        200:
+          $ref: components/responses/@taxes.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attributes/{attributeId}/options:
+    get:
+      tags:
+        - Attribute option
+      summary: Get list attribute options
+      parameters:
+        - $ref: components/parameters/@attributes@options.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attributes@options.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    post:
+      tags:
+        - Attribute option
+      summary: Create a new attribute option
+      parameters:
+        - $ref: components/parameters/@attributes@{attributeId}@options.yml#/post
+      requestBody:
+        $ref: components/requestBodies/@attributes@{attributeId}@options.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@attributes@{attributeId}@options.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attributes/{attributeId}/options/{optionId}:
+    patch:
+      tags:
+        - Attribute option
+      summary: Update an attribute option
+      parameters:
+        - $ref: components/parameters/@attributes@{attributeId}@options@{option_id}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@attributes@{attributeId}@options@{option_id}.yml#/patch
+      responses:
+        200:
+          $ref: /components/responses/@attributes@{attributeId}@options@{option_id}.yml#/patch/200
+        400:
+          $ref: /components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: /components/responses/ServerErrors.yml#/InternalServer
+    delete:
+      tags:
+        - Attribute option
+      summary: Delete an attribute option
+      parameters:
+        - $ref: components/parameters/@attributes@{attributeId}@options@{option_id}.yml#/delete
+      responses:
+        200:
+          $ref: components/responses/@attributes@{attributeId}@options@{option_id}.yml#/delete/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attributes:
+    get:
+      tags:
+        - Attribute
+      summary: Get list of attribute
+      parameters:
+        - $ref: components/parameters/@attributes.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attributes.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    post:
+      tags:
+        - Attribute
+      summary: Create new attribute
+      requestBody:
+        $ref: components/requestBodies/@attributes.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@attributes.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attributes/{attributeId}:
+    get:
+      tags:
+        - Attribute
+      summary: Get detail attribute
+      parameters:
+        - $ref: components/parameters/@attributes@{attributeId}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attributes@{attributeId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    patch:
+      tags:
+        - Attribute
+      summary: Update attribute
+      parameters:
+        - $ref: components/parameters/@attributes@{attributeId}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@attributes@{attributeId}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@attributes@{attributeId}.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attribute_sets/configs/{configId}:
+    get:
+      tags:
+        - Attribute set
+      summary: Get common info of config
+      parameters:
+        - $ref: components/parameters/@attribute_sets@configs@{configId}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@configs@{configId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attribute_sets/configs/{configId}/detail:
+    get:
+      tags:
+        - Attribute set
+      summary: Get attribute set config detail
+      parameters:
+        - $ref: components/parameters/@attribute_sets@configs@{configId}@detail.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@configs@{configId}@detail.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    put:
+      tags:
+        - Attribute set
+      summary: Update attribute set config detail
+      parameters:
+        - $ref: components/parameters/@attribute_sets@configs@{configId}@detail.yml#/put
+      requestBody:
+        $ref: components/requestBodies/@attribute_sets@configs@{configId}@detail.yml#/put
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@configs@{configId}@detail.yml#/put/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attribute_sets/{setId}/configs:
+    get:
+      tags:
+        - Attribute set
+      summary: Get list config of attribute set
+      parameters:
+        - $ref: components/parameters/@attribute_sets@{setId}@configs.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@{setId}@configs.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    put:
+      tags:
+        - Attribute set
+      summary: Update list config for attribute set
+      parameters:
+        - $ref: components/parameters/@attribute_sets@{setId}@configs.yml#/put
+      requestBody:
+        $ref: components/requestBodies/@attribute_sets@{setId}@configs.yml#/put
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@{setId}@configs.yml#/put/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attribute_sets:
+    get:
+      tags:
+        - Attribute set
+      summary: Get list of attribute set
+      parameters:
+        - $ref: components/parameters/@attribute_sets.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    post:
+      tags:
+        - Attribute set
+      summary: Create new attribute set
+      requestBody:
+        $ref: components/requestBodies/@attribute_sets.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attribute_sets/{setId}:
+    get:
+      tags:
+        - Attribute set
+      summary: Get attribute set detail
+      parameters:
+        - $ref: components/parameters/@attribute_sets@{setId}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@{setId}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    patch:
+      tags:
+        - Attribute set
+      summary: Update attribute set
+      parameters:
+        - $ref: components/parameters/@attribute_sets@{setId}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@attribute_sets@{setId}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@{setId}.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+  /attribute_sets/{setId}/variation_attributes:
+    post:
+      tags:
+        - Attribute set
+      summary: Create variation attribute for attribute set
+      parameters:
+        - $ref: components/parameters/@attribute_sets@{setId}@variation_attributes.yml#/post
+      requestBody:
+        $ref: components/requestBodies/@attribute_sets@{setId}@variation_attributes.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@{setId}@variation_attributes.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    patch:
+      tags:
+        - Attribute set
+      summary: Update order variation attributes in attribute set
+      parameters:
+        - $ref: components/parameters/@attribute_sets@{setId}@variation_attributes.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@attribute_sets@{setId}@variation_attributes.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@attribute_sets@{setId}@variation_attributes.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /import/{attributeSetId}/templates/{templateType}:
+    get:
+      tags:
+        - Import
+      summary: Template for create product
+      parameters:
+        - in: path
+          name: templateType
+          required: true
+        - in: path
+          name: attributeSetId
+          required: true
+        - $ref: components/parameters/@import@{attributeSetId}@templates@{templateType}.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@import@{attributeSetId}@templates@{templateType}.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /import:
+    post:
+      tags:
+        - Import
+      summary: Upload file for types import
+      parameters:
+        - $ref: components/parameters/@import.yml#/post
+      requestBody:
+        $ref: components/requestBodies/@import.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@import.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /import/editing_status/template:
+    get:
+      tags:
+        - Import
+      summary: Get update editing status file template
+      responses:
+        200:
+          $ref: components/responses/@import@editing_status@template.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /import/update_product_tag/template:
+    get:
+      tags:
+        - Import
+      summary: Get update product tag file template
+      responses:
+        200:
+          $ref: components/responses/@import@update_product_tag@template.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /import/histories:
+    get:
+      tags:
+        - Import
+      summary: Get import histories
+      parameters:
+        - $ref: components/parameters/@import@histories.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@import@histories.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /units:
+    get:
+      tags:
+        - Unit
+      summary: Get list of units
+      parameters:
+        - $ref: components/parameters/@units.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@units.yml#/get/200
+    post:
+      tags:
+        - Unit
+      summary: Create a new Unit
+      requestBody:
+        $ref: components/requestBodies/@units.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@units.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /units/{unitId}:
+    patch:
+      tags:
+        - Unit
+      summary: Update a Unit
+      parameters:
+        - $ref: components/parameters/@units@{unitId}.yml#/patch
+      requestBody:
+        $ref: components/requestBodies/@units@{unitId}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@units@{unitId}.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    delete:
+      tags:
+        - Unit
+      summary: Delete a Unit
+      parameters:
+        - $ref: components/parameters/@units@{unitId}.yml#/delete
+      responses:
+        200:
+          $ref: components/responses/@units@{unitId}.yml#/delete/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /shipping_policies:
+    post:
+      tags:
+        - Shipping Policy
+      summary: Create new shipping policy
+      requestBody:
+        $ref: components/requestBodies/@shipping_policies.yml#/post
+      responses:
+        200:
+          $ref: components/responses/@shipping_policies.yml#/post/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+    get:
+      tags:
+        - Shipping Policy
+      summary: Get list shipping policy with filters
+      parameters:
+        - $ref: components/parameters/@shipping_policies.yml#/get
+      responses:
+        200:
+          $ref: components/responses/@shipping_policies.yml#/get/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer
+
+  /shipping_policies/{policy_id}:
+    parameters:
+      - in: path
+        name: policy_id
+        description: The Id of a shipping policies
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+        - Shipping Policy
+      summary: Get policy detail
+      responses:
+        200:
+          $ref: components/responses/@shipping_policies@{policy_id}.yml#/get/200
+
+
+    patch:
+      tags:
+        - Shipping Policy
+      summary: Update shipping policy
+      requestBody:
+        $ref: components/requestBodies/@shipping_policies@{policy_id}.yml#/patch
+      responses:
+        200:
+          $ref: components/responses/@shipping_policies@{policy_id}.yml#/patch/200
+        400:
+          $ref: components/responses/ClientErrors.yml#/BadRequest
+        500:
+          $ref: components/responses/ServerErrors.yml#/InternalServer

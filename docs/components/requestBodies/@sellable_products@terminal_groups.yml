@@ -1,0 +1,16 @@
+post:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          sellableProducts:
+            type: array
+            example: [12345, 12354]
+            items:
+              type: integer
+          terminalGroups:
+            type:  array
+            items:
+              type: string
+              example: ["GROUP1", "GROUP2"]

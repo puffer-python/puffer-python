@@ -1,0 +1,19 @@
+get:
+  - in: query
+    name: query
+    schema:
+      type: string
+      default: null
+    description: filter like names, codes
+  - in: query
+    name: pageSize
+    schema:
+      type: integer
+      default: 10
+    example: 10
+  - in: query
+    name: page
+    schema:
+      type: integer
+      default: 1
+    example: 1

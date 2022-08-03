@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package catalog.v1;
+
+
+// AddVariantSkuMsg is message will be published when:
+// - a new variant SKU is added to a product
+// - or an existing variant SKU is moved to another product
+// @exclude Next ID: 3
+message AddVariantSkuMsg {
+  // variant_sku is the SKU was added or moved
+  string variant_sku = 1 [json_name = "variantSku"];
+  // sibling_sku is one of the existing SKUs of the product
+  string sibling_sku = 2 [json_name = "siblingSku"];
+}
+
+// UpdateSkuDimensionsWeightMsg is message will be received when
+// dimensions, weight of a SKU is changed.
+// @exclude Next ID: 6
+message UpdateSkuDimensionsWeightMsg {
+  // sku is the SKU whose dimensions, weight were changed
+  string sku = 1 [json_name = "sku"];
+  // length
+  float length = 2 [json_name = "length"];
+  // width
+  float width = 3 [json_name = "width"];
+  // height
+  float height = 4 [json_name = "height"];
+  // weight
+  float weight = 5 [json_name = "weight"];
+}

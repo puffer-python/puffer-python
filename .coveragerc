@@ -1,0 +1,8 @@
+[paths]
+source =
+    catalog
+
+
+[run]
+omit = 
+    catalog/extensions/*

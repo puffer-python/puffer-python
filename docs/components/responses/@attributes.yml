@@ -1,0 +1,71 @@
+get:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  allOf:
+                    - $ref: ../schemas/ObjectList.yml
+                    - type: object
+                      properties:
+                        attributes:
+                          type: array
+                          items:
+                            allOf:
+                              - $ref: ../schemas/GenericAttribute.yml
+                              - type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                                  options:
+                                    type: array
+                                    minItems: 0
+                                    items:
+                                      type: object
+                                      properties:
+                                        optionId:
+                                          type: integer
+                                          example: 65
+                                        value:
+                                          type: string
+                                          example: "VivoBook"
+                                        unit:
+                                          type: object
+                                          nullable: true
+                                          properties:
+                                            id:
+                                              type: integer
+                                              example: 1
+                                            name:
+                                              type: string
+                                              example: "Bịch"
+                                            code:
+                                              type: string
+                                              example: "1"
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer
+
+
+post:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  attribute:
+                    $ref: ../schemas/GenericAttribute.yml
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

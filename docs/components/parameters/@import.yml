@@ -1,0 +1,11 @@
+post:
+  - in: query
+    name: attributeSetId
+    schema:
+      type: integer
+  - in: query
+    name: type
+    required: true
+    schema:
+      type: string
+      description: code in misc table with type = `import_type`

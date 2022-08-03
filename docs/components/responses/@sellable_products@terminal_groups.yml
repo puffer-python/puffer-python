@@ -1,0 +1,26 @@
+post:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    sellableProducts:
+                      type: array
+                      items:
+                        type: integer
+                      example: [12314, 12345]
+                    terminalGroups:
+                      type:  array
+                      items:
+                        type: string
+                      example: ["GROUP1", "GROUP2"]
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

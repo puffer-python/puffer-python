@@ -1,0 +1,13 @@
+get:
+  - in: path
+    name: setId
+    required: true
+    schema:
+      type: integer
+
+post:
+  - in: path
+    name: setId
+    required: true
+    schema:
+      type: integer

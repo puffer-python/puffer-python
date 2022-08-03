@@ -1,0 +1,99 @@
+get:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 2
+                    name:
+                      type: string
+                      example: "Laptop Acer"
+                    code:
+                      type: string
+                      example: "01-N001-01"
+                    parent:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: "Lmao"
+                    masterCategory:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        code:
+                          type: string
+                    root:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: "Lmao"
+                    path:
+                      type: string
+                      example: "1/2"
+                    isActive:
+                      type: boolean
+                      example: true
+                    depth:
+                      type: integer
+                      example: 2
+                    taxInCode:
+                      type: string
+                      example: '5'
+                    taxOutCode:
+                      type: string
+                      example: '5'
+                    manageSerial:
+                      type: boolean
+                    autoGenerateSerial:
+                      type: boolean
+                    unitId:
+                      type: integer
+                    attributeSet:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: "Bộ thuộc tính"
+
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer
+
+patch:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  $ref: ../schemas/GenericCategory.yml
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

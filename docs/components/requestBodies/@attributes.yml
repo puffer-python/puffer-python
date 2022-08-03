@@ -1,0 +1,49 @@
+post:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+        - name
+        - displayName
+        - code
+        - valueType
+        properties:
+          name:
+            type: string
+            example: "Series của laptop"
+            minLength: 1
+            maxLength: 255
+          displayName:
+            type: string
+            example: "Series laptop"
+            minLength: 1
+            maxLength: 255
+          code:
+            type: string
+            example: "laptop_series"
+            minLength: 1
+            maxLength: 255
+          valueType:
+            type: string
+            example: "selection"
+          isRequired:
+            type: boolean
+            example: false
+          isSearchable:
+            type: boolean
+            example: true
+          isFilterable:
+            type: boolean
+            example: true
+          isComparable:
+            type: boolean
+            example: false
+          unitId:
+            type: integer
+            example: 1
+          description:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: ""

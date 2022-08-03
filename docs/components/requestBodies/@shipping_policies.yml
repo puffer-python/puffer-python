@@ -1,0 +1,32 @@
+post:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+          - shippingType
+          - providerIds
+          - categoryIds
+          - isActive
+        properties:
+          name:
+            type: string
+            example: 'Rule 1'
+          isActive:
+            type: boolean
+            example: true
+          shippingType:
+            type: string
+            example: 'all|near|bulky'
+          categoryIds:
+            type: array
+            items:
+              type: integer
+            example: [1, 2, 3]
+          providerIds:
+            type: array
+            items:
+              type: integer
+            example: [1, 2, 3]

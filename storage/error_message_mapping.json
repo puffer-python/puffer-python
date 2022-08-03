@@ -1,0 +1,16 @@
+{
+  "^Bạn có 1 sản phẩm (.*?) ở seller (.*?) đang trong quá trình tạo, vui lòng hoàn thành tạo mới sản phẩm đó để tiếp tục$": "InprogressProductCreationException",
+  "^Thiếu đơn vị tính$": "InvalidUnitException",
+  "^Đơn vị không tồn tại$": "UnitNotFoundException",
+  "^Danh mục sản phẩm không tồn tại trên hệ thống, vui lòng chọn lại$": "MasterCategoryNotFoundException",
+  "^Danh mục sản phẩm đang bị vô hiệu, vui lòng chọn lại$|^Vui lòng chọn danh mục sản phẩm là nút lá$": "InvalidMasterCategoryException",
+  "^Vui lòng bổ sung thông tin Thương hiệu$|^Thương hiệu đang bị vô hiệu, vui lòng chọn lại$": "InvalidBrandException",
+  "^Thương hiệu không tồn tại, vui lòng chọn lại$": "BrandNotFoundException",
+  "^2 biến thể có các thuộc tính biến thể khác nhau$|^2 biến thể có các thuộc tính biến thể khác nhau$|^Sản phẩm không có thuộc tính xác định biến thể biến thể$|^Sản phẩm bắt buộc phải có biến thể$|^Vui lòng cập nhật thông tin biến thể .+ cho SKU .*$|^Trùng lặp dữ liệu$|^Thuộc tính không phải là thuộc tính biến thể$|^Giá trị không tồn tại trên hệ thống$|^Giá trị không thể gán cho thuộc tính$|^$": "AttributeInvalidException",
+  "^Biến thể đã tồn tại trên hệ thống$": "VariantDuplicatedException",
+  "^Hệ thống đang gặp lỗi. Vui lòng thử lại sau$": "ServiceException",
+  "^Đường dẫn không hợp lệ$|^Vượt quá giới hạn ảnh cho một biến thế (36 ảnh)$|^Ảnh không đúng định dạng$|^Đường dẫn không hợp lệ$": "InvalidVariantImagesException",
+  "^Nhà cung cấp không hợp lệ$": "InvalidProviderException",
+  "^SKU được cấu hình tự động$|^Vui lòng bổ sung Mã sản phẩm$|^SKU đã tồn tại$": "InvalidProductSKUException",
+  "^Barcode đã tồn tại$": "ProductBardcodeDuplicatedException"
+}

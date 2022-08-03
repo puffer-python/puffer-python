@@ -1,0 +1,23 @@
+patch:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+        properties:
+          name:
+            type: string
+          logo:
+            type: string
+            format: byte
+            description: base64-encoded file contents
+          isActive:
+            type: boolean
+          docRequest:
+            type: boolean
+      example:
+        name: brand-1
+        code: brand-demo
+        docRequest: true

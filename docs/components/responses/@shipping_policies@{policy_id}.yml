@@ -1,0 +1,53 @@
+patch:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: 'Rule 1'
+                    isActive:
+                      type: boolean
+                      example: true
+                    shippingType:
+                      type: string
+                      example: 'all|near|bulky'
+                    categoryIds:
+                      type: array
+                      items:
+                        type: integer
+                        example: [1, 2, 3]
+                    providerIds:
+                      type: array
+                      items:
+                        type: integer
+                      example: [1, 2, 3]
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer
+
+
+get:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: object
+                  $ref: ../schemas/ShippingPolicy.yml
+    400:
+      $ref: ClientErrors.yml#/BadRequest
+    500:
+      $ref: ServerErrors.yml#/InternalServer

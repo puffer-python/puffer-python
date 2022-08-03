@@ -1,0 +1,7 @@
+put:
+  - in: path
+    name: sellableId
+    schema:
+      type: integer
+    required: true
+    example: 1

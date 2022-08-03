@@ -1,0 +1,12 @@
+post:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - value
+        properties:
+          value:
+            type: string
+          code:
+            type: string

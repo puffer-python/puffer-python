@@ -1,0 +1,18 @@
+get:
+  200:
+    description: Product line
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  type: array
+                  items:
+                    $ref: ../schemas/GenericProductLine.yml
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

@@ -1,0 +1,8 @@
+type: object
+properties:
+  useConfig:
+    type: boolean
+  userValue:
+    type: string
+  configValue:
+    type: string

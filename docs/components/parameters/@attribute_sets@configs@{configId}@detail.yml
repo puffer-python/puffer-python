@@ -1,0 +1,18 @@
+get:
+  - in: path
+    name: configId
+    schema:
+      type: integer
+    required: true
+  - in: query
+    name: fieldDisplay
+    schema:
+      type: string
+    required: false
+    default: null
+put:
+  - in: path
+    name: configId
+    schema:
+      type: integer
+    required: true

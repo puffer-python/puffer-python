@@ -1,0 +1,19 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  code:
+    type: string
+  hasProduct:
+    type: boolean
+  groups:
+    type: array
+    items:
+      $ref: AttributeGroup.yml
+  attributes:
+    type: array
+    items:
+      $ref: Attribute.yml
+

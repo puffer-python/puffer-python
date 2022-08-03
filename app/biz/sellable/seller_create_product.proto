@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package catalog.sellable;
+
+message Attribute {
+  string attributeCode = 1;
+  string value = 2;
+}
+
+message Image {
+  string url = 1;
+  string name = 2;
+}
+
+message SellerCreateProduct {
+  string name = 1;
+  string sellerSKU = 2;
+  string brandCode = 3;
+  string categoryCode = 4;
+  int32 warrantyMonths = 5;
+  string warrantyNote = 6;
+  string unitCode = 7;
+  string model = 8;
+  string barcode = 9;
+  string type = 10;
+  repeated Attribute attributes = 11;
+  string displayName = 12;
+  string shortDescription = 13;
+  string description = 14;
+  repeated Image images = 15;
+  string mode = 16;
+}

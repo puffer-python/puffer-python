@@ -1,0 +1,70 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 2
+  name:
+    type: string
+    example: "Laptop Acer"
+  code:
+    type: string
+    example: "01-N001-01"
+  parent:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: "Lmao"
+  root:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: "Lmao"
+      code:
+        type: string
+        example: "lmao"
+  path:
+    type: string
+    example: "1/2"
+  isActive:
+    type: boolean
+    example: true
+  depth:
+    type: integer
+    example: 2
+  taxInCode:
+    type: string
+    example: "5"
+  taxOutCode:
+    type: string
+  manageSerial:
+    type: boolean
+  autoGenerateSerial:
+    type: boolean
+  unitId:
+    type: integer
+  attributeSet:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: 'Laptop'
+  masterCategory:
+    type: object
+    properties:
+      name:
+        type: string
+      code:
+        type: string
+      id:
+        type: integer

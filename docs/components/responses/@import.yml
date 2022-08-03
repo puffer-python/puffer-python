@@ -1,0 +1,29 @@
+post:
+  200:
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: Success.yml
+            - type: object
+              properties:
+                result:
+                  $ref: ../schemas/FileImportHistory.yml
+        example:
+          code: SUCCESS
+          message: ""
+          result:
+            id: 1
+            name: Update-product-tag.xlsx
+            status: new
+            totalRow: 200
+            path: https://storage.googleapis.com/teko-gae.appspot.com/media/doc/2020/3/9/20200309_5ca4e766-e58e-4530-a124-3d617d1fe562.xlsx
+            note: Active
+            totalRowSuccess:
+            successPath:
+            createdAt: '2017-07-21T17:32:28.000Z'
+            createdBy: thanh.nk@teko.vn
+  400:
+    $ref: ClientErrors.yml#/BadRequest
+  500:
+    $ref: ServerErrors.yml#/InternalServer

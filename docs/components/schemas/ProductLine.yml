@@ -1,0 +1,8 @@
+allOf:
+  - $ref: 'GenericProductLine.yml'
+  - type: object
+    properties:
+      children:
+        type: array
+        items:
+          $ref: 'GenericCategory.yml'  

@@ -1,0 +1,12 @@
+patch:
+  - in: path
+    name: setId
+    schema:
+      type: integer
+    required: true
+post:
+  - in: path
+    name: setId
+    schema:
+      type: integer
+    required: true

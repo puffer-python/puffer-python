@@ -1,0 +1,8 @@
+allOf:
+  - $ref: ObjectList.yml
+  - type: object
+    properties:
+      brands:
+        type: array
+        items:
+          $ref: Brand.yml

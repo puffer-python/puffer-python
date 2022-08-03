@@ -1,0 +1,14 @@
+get:
+  - in: path
+    name: productId
+    required: true
+    schema:
+      type: integer
+      example: 1
+patch:
+  - in: path
+    name: productId
+    required: true
+    schema:
+      type: integer
+      example: 1
