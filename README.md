@@ -1,5 +1,4 @@
-## Catalog API
-
+# Puffer Python
 ## Prerequisites
 
 * Python 3.7
@@ -142,6 +141,3 @@ pytest \
     --last-failed \
 ;
 ```
-
-
-== VERION 1.79
